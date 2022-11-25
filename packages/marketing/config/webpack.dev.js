@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge') // usado para mergear configurações
 const HtmlWebpackPlugin = require('html-webpack-plugin') // usado para injeção de html
 const commonConfig = require('./webpack.common')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const packageJson = require('../package.json')
 
 const devConfig = {
   mode: 'development',
@@ -20,7 +21,9 @@ const devConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './MarketingApp': './src/bootstrap'
-      }
+      },
+      // shared: ['react', 'react-dom']
+      shared: packageJson.dependencies
     })
   ]
 }
