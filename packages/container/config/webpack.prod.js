@@ -8,7 +8,8 @@ const domain = process.env.PRODUCTION_DOMAIN;
 const prodConfig = {
   mode: 'production',  // webpack will build differently, optmizing, minifying the files
   output: {
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/container/latest/'
   },
   plugins: [
     new ModuleFederationPlugin({
