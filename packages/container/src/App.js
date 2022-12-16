@@ -11,6 +11,7 @@ const generateClassName = createGenerateClassName({
   productionPrefix: 'co'
 })
 
+//these lazy componentes will be loaded only when requested their pages
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
 
