@@ -7,7 +7,8 @@ export default ({onSignIn}) => {
 
   const history = useHistory()
 
-  //useEffect hook determines what's gonna be executed when this component shows up
+  //useEffect hook determines what's gonna be executed when this component show up
+
   useEffect(() => {
     const { onParentNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
