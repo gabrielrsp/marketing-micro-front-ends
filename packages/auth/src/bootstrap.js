@@ -4,10 +4,11 @@ import App from './App';
 import { createMemoryHistory, createBrowserHistory } from 'history'
 
 
-
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
-  const history = defaultHistory || createMemoryHistory() // we are creating our history here cause we're going to eventually add in a lot of code
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+  const history = defaultHistory || createMemoryHistory({
+    initialEntries: [initialPath]
+  }) // we are creating our history here cause we're going to eventually add in a lot of code
  
   if (onNavigate) {
      history.listen(onNavigate); // event listener that call a function as a callback (that provides by default the location as a parameter) any times it detects a navigation
