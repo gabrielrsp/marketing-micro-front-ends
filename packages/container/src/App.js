@@ -14,10 +14,12 @@ const generateClassName = createGenerateClassName({
 //these lazy componentes will be loaded only when requested their pages
 const MarketingLazy = lazy(() => import('./components/MarketingApp'));
 const AuthLazy = lazy(() => import('./components/AuthApp'));
+const DashboardLazy = lazy(() => import('./components/DashboardApp'));
 
 export default () => {
   const [isSignedIn, setIsSignedIn] = useState(false)
 
+  //remember to put specific routes ('/example') before root routes( only '/' )
   return (
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
@@ -28,6 +30,7 @@ export default () => {
                 <Route path="/auth">
                  <AuthLazy onSignIn={() => setIsSignedIn(true)} />
                 </Route>
+                <Route path="/dashboard" component={DashboardLazy} />
                 <Route path="/" component={MarketingLazy} />
               </Switch>
             </Suspense>
